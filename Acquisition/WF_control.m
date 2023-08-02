@@ -10,7 +10,6 @@ if isempty(gcp)
 end
 
 q = parallel.pool.DataQueue;
-% afterEach(q, @(data) imshow(data, []));
 afterEach(q, @disp);
 
 f = parfeval(@capture_video, 1, q);
