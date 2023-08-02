@@ -23,7 +23,7 @@ function wf_imaging_continuous
     FrameRate= WF_FileInfo.CameraFrameRate; % frame rate
 
     t = 1/Stim_S_SR : 1/Stim_S_SR : ((trial_duration)/1000); % Time vector
-    w = WF_FileInfo.CameraExposure/1000; % Pulse width (s)
+    w = WF_FileInfo.CameraExposure; % Pulse width (s)
     d = w/2 : 1/FrameRate : (trial_duration/1000); % Delay vector
     Cam_pulses = pulstran(t,d,'rectpuls',w);
 
