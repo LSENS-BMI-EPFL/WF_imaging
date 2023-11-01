@@ -13,12 +13,8 @@ function wf_imaging_continuous
     WF_FileInfo.CameraPathTemplateConfig = '\\SV-07-091\Experiment\WideFieldImaging\Template\config.txt';
     WF_FileInfo.n_frames_to_grab         = trial_duration*WF_FileInfo.CameraFrameRate/1000;
 
-    time = [handles2give.session_time(1:2) 'h' handles2give.session_time(3:4)];        
-    
-    WF_FileInfo.savedir                    = [WF_FileInfo.CameraRoot handles2give.mouse_name '\' handles2give.date '\'...
-                                             [char(handles2give.mouse_name) '_' char(handles2give.date) '_' char(time) '\']];
-
-    WF_FileInfo.file_name                  = [char(handles2give.mouse_name) '_' char(handles2give.date) '_' char(time)];
+    WF_FileInfo.file_name = [char(handles2give.mouse_name) '_' char(handles2give.date) '_' char(handles2give.session_time)];
+    WF_FileInfo.savedir = [WF_FileInfo.CameraRoot handles2give.mouse_name '\' WF_FileInfo.file_name '\'];  
         
     FrameRate= WF_FileInfo.CameraFrameRate; % frame rate
 
@@ -53,6 +49,7 @@ function wf_imaging_continuous
     end
     
     WriteConfigCtxCam(WF_FileInfo);
+    save_wf_config;
     preload(WF_S, [wf_cam_vec; LED1_vec; LED2_vec;]')
     start(WF_S, 'repeatoutput')
     

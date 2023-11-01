@@ -12,12 +12,8 @@ function wf_imaging
 
     WF_FileInfo.n_frames_to_grab         = trial_duration*WF_FileInfo.CameraFrameRate/1000;
 
-    time = [handles2give.session_time(1:2) 'h' handles2give.session_time(3:4)];        
-    
-    WF_FileInfo.savedir                    = [WF_FileInfo.CameraRoot handles2give.mouse_name '\' handles2give.date '\'...
-                                             [char(handles2give.mouse_name) '_' char(handles2give.date) '_' char(time) '\']];
-
-    WF_FileInfo.file_name                  = [char(handles2give.mouse_name) '_' char(handles2give.date) '_' char(time)];
+    WF_FileInfo.file_name = [char(handles2give.mouse_name) '_' char(handles2give.date) '_' char(handles2give.session_time)];
+    WF_FileInfo.savedir = [WF_FileInfo.CameraRoot handles2give.mouse_name '\' WF_FileInfo.file_name '\'];  
         
     if trial_number == 1
         
@@ -52,6 +48,7 @@ function wf_imaging
         else
             LED2_vec = zeros(1, length(wf_cam_vec));
         end
+        save_wf_config
     end
 
     WriteConfigCtxCam(WF_FileInfo);

@@ -15,6 +15,7 @@ function wf_setup(trigger)
     addoutput(WF_S, 'Dev3', 'ao1', 'Voltage'); % LED1 output
     addoutput(WF_S, 'Dev3', 'ao2', 'Voltage'); % LED2 output
     WF_S.Rate = 100000;
+    WF_S.ScansRequiredFcnCount = 150000;
 
     if trigger % Necessary for trial based WF imaging
         addtrigger(WF_S, 'Digital', 'StartTrigger', 'External', 'Dev3/PFI0');
