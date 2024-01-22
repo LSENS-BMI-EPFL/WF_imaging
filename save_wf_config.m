@@ -5,7 +5,7 @@ function save_wf_config
 
     global folder_name wf_gui WF_FileInfo
     
-    wf_config_json = jsonencode(Opto_info, PrettyPrint=true);
+    wf_config_json = jsonencode(WF_FileInfo, PrettyPrint=true);
     
 % Save config file
     fid = fopen([folder_name '\wf_config.json'],'w');
