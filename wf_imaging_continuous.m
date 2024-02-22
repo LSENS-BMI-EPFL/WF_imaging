@@ -9,8 +9,13 @@ function wf_imaging_continuous
 
     % Path to imaging computer to update ConfigFile
 
-    WF_FileInfo.CameraPathConfig         = '\\SV-07-091\Experiment\WideFieldImaging\config.txt';
-    WF_FileInfo.CameraPathTemplateConfig = '\\SV-07-091\Experiment\WideFieldImaging\Template\config.txt';
+    if getenv('COMPUTERNAME')=='SV-07-051'
+        WF_FileInfo.CameraPathConfig         = '\\SV-07-091\Experiment\WideFieldImaging\config.txt';
+        WF_FileInfo.CameraPathTemplateConfig = '\\SV-07-091\Experiment\WideFieldImaging\Template\config.txt';
+    else
+        WF_FileInfo.CameraPathConfig         = '\\SV-07-074\Experiment\WideFieldImaging\config.txt';
+        WF_FileInfo.CameraPathTemplateConfig = '\\SV-07-074\Experiment\WideFieldImaging\Template\config.txt';
+    end
     WF_FileInfo.n_frames_to_grab         = trial_duration*WF_FileInfo.CameraFrameRate/1000;
 
     WF_FileInfo.file_name = [char(handles2give.mouse_name) '_' char(handles2give.date) '_' char(handles2give.session_time)];

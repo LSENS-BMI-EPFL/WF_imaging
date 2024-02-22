@@ -11,10 +11,10 @@ function wf_stop
     
             % Send one last vector of known length (5s) to save last file of
             % images
-            write(WF_S, [wf_cam_vec(1:length(wf_cam_vec)/2); LED1_vec(1:length(wf_cam_vec)/2); LED2_vec(1:length(wf_cam_vec)/2)]')
+%             write(WF_S, [wf_cam_vec(1:length(wf_cam_vec)/2); LED1_vec(1:length(wf_cam_vec)/2); LED2_vec(1:length(wf_cam_vec)/2)]')
     
             % Set all values to 0
-            write(WF_S, [zeros(1,50000)', zeros(1,50000)', zeros(1,50000)'])
+%             write(WF_S, [zeros(1,50000)', zeros(1,50000)', zeros(1,50000)'])
             
             while WF_S.Running
                 continue
